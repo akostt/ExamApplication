@@ -37,12 +37,23 @@ namespace ExamApplication
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            if (Data.Count == 0)
+            {
+                ShowErrorMessage("Добавьте хотя бы одну запись.");
+                return;
+            }
+
             Controls.SortByHourAndMinutesArrive(Data);
             UpdateData();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            if (Data.Count == 0)
+            {
+                ShowErrorMessage("Добавьте хотя бы одну запись.");
+                return;
+            }
             try
             {
                 Controls.SaveToFile(Data, FILE_NAME);
@@ -53,6 +64,11 @@ namespace ExamApplication
                 MessageBox.Show(exception.Message, "Ошибка при сохранении файла", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+            MessageBox.Show(message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
