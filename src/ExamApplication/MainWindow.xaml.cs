@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace ExamApplication
 {
@@ -42,7 +43,16 @@ namespace ExamApplication
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Controls.SaveToFile(Data, FILE_NAME);
+            try
+            {
+                Controls.SaveToFile(Data, FILE_NAME);
+                MessageBox.Show($"{Data.Count} записей были успешно сохранены в файл {FILE_NAME}", "Успешное сохранение", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch(Exception exception) 
+            {
+                MessageBox.Show(exception.Message, "Ошибка при сохранении файла", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
     }
 }
