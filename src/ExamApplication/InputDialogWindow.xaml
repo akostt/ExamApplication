@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamApplication"
         mc:Ignorable="d"
-        Title="InputDialogWindow" Height="230" Width="722">
+        Title="Ввод данных" Height="230" Width="722">
     <Grid>
         <Label Content="Аэропорт отправления" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="AeroportOutInput" HorizontalAlignment="Left" Margin="153,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165"/>

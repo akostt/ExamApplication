@@ -33,7 +33,7 @@ namespace ExamApplication
         {
             int number = 1;
             var result = flights
-                .Select(flight => $"Самолёт №{number++}\nАэропорт отправления: {flight.AeroportOut}\nАэропорт прибытия: {flight.AeroportIn}\nВремя отправления: {flight.HourArrive}:{flight.MinutesArrive.ToString("DD")}");
+                .Select(flight => $"Самолёт №{number++}\nАэропорт отправления: {flight.AeroportOut}\nАэропорт прибытия: {flight.AeroportIn}\nВремя отправления: {flight.HourArrive}:{flight.MinutesArrive.ToString("00")}");
             return result.ToArray();
         }
     }
