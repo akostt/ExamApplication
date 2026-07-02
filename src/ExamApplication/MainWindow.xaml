@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="Данные" Margin="10,10,0,0" Grid.Row="0"/>
+        <ListBox x:Name="dataView" Grid.Row="1"/>
 
     </Grid>
 </Window>
