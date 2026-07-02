@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ExamApplication
+﻿namespace ExamApplication
 {
-    class Flight
+    public class Flight
     {
-        public string AuroportOut { get; set; }
+        public string AeroportOut { get; set; } = string.Empty;
 
-        public string AeroportIn { get; set; }
+        public string AeroportIn { get; set; } = string.Empty;
+
+        public int HourArrive { get; set; }
+
+        public int MinutesArrive { get; set; }
     }
 }

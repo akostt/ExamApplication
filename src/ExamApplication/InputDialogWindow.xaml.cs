@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace ExamApplication
 {
@@ -17,9 +7,55 @@ namespace ExamApplication
     /// </summary>
     public partial class InputDialogWindow : Window
     {
-        public InputDialogWindow()
+        public Flight FlightData { get; private set; }
+
+        public InputDialogWindow(Flight flight, bool edit = false)
         {
+            this.FlightData = flight;
+            if (edit)
+            {
+                AeroportOutInput.Text = FlightData.AeroportOut;
+                AeroportInInput.Text = FlightData.AeroportIn;
+                TimeArriveInput.Text = $"{FlightData.HourArrive}:{FlightData.MinutesArrive}";
+            }
             InitializeComponent();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(string.IsNullOrEmpty(AeroportOutInput.Text))
+            {
+                ShowErrorMessage("Значение аэропорта отправления пустое.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(AeroportInInput.Text))
+            {
+                ShowErrorMessage("Значение аэропорта прибытия пустое.");
+                return;
+            }
+
+            if (!TimeOnly.TryParse(TimeArriveInput.Text, out var timeArrive))
+            {
+                ShowErrorMessage("Не удалось распознать введенное время отправления.");
+                return;
+            }
+
+            FlightData.AeroportOut = AeroportOutInput.Text;
+            FlightData.AeroportIn = AeroportInInput.Text;
+            FlightData.HourArrive = timeArrive.Hour;
+            FlightData.MinutesArrive = timeArrive.Minute;
+            DialogResult = true;
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+            MessageBox.Show(message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
