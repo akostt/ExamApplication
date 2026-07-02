@@ -46,7 +46,7 @@ namespace ExamApplication
             try
             {
                 Controls.SaveToFile(Data, FILE_NAME);
-                MessageBox.Show($"{Data.Count} записей были успешно сохранены в файл {FILE_NAME}", "Успешное сохранение", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"Записи были успешно сохранены в файл {FILE_NAME} в количестве {Data.Count} шт.", "Успешное сохранение", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch(Exception exception) 
             {
